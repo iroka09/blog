@@ -1,3 +1,18 @@
 @tailwind base; 
 @tailwind components; 
 @tailwind utilities; 
+
+@layer components {
+  .input {
+    @apply w-full text-sm py-2 px-3 transition bg-gray-100 text-gray-700 placeholder:font-semibold placeholder:text-gray-400 rounded-lg border border-gray-300 outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-500 focus:bg-blue-50
+  }
+  .btn{
+    @apply bg-slate-100 transition text-slate-600 font-semibold py-2 px-5 rounded-lg uppercase focus:ring-4 focus:ring-slate-300 focus:bg-slate-200 outline-none
+  }
+  .btn-primary{
+    @apply bg-blue-500 text-white focus:ring-blue-300 focus:bg-blue-600
+  }
+  .card{
+    @apply max-w-[500px] w-full border border-gray-300 rounded-lg box-border p-3
+  }
+}

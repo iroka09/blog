@@ -8,12 +8,12 @@ const router = createEdgeRouter<NextRequest, NextFetchEvent>();
 
 
 
-router.use(async (request, event, next) => {
-  console.warn("middleware: ", request.nextUrl.pathname);
+router.use(async (req, event, next) => {
+  console.warn("middleware: ", req.nextUrl.pathname);
   return next();
 });
 
-router.use("/any", (request) => {
+router.use("/any", (req) => {
   return new NextResponse("ONE page-1 oooo")
 });
 
@@ -21,8 +21,8 @@ router.all(() => {
   return NextResponse.next();
 });
 
-export async function middleware(request: NextRequest, event: NextFetchEvent) {
-  return router.run(request, event);
+export async function middleware(req: NextRequest, event: NextFetchEvent) {
+  return router.run(req, event);
 }
 
 export const config = {
