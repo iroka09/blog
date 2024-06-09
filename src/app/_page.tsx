@@ -4,7 +4,65 @@ import { useState, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { changeUsername, changePassword } from "@/components/redux/userSlice"
 import { DispatchType, RootStateType } from "@/components/redux/store"
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
+
+
+function CardWithForm() {
+  return (
+    <Card className="w-[350px] max-w-full">
+      <CardHeader>
+        <CardTitle>Create project</CardTitle>
+        <CardDescription>Deploy your new project in one-click.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" placeholder="Name of your project" />
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="framework">Framework</Label>
+              <Select>
+                <SelectTrigger id="framework">
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent position="popper">
+                  <SelectItem value="next">Next.js</SelectItem>
+                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
+                  <SelectItem value="astro">Astro</SelectItem>
+                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button variant="outline">Cancel</Button>
+        <Button>Deploy</Button>
+      </CardFooter>
+    </Card>
+  )
+}
 
 
 export default function () {
@@ -21,12 +79,13 @@ export default function () {
   }
   return (
     <section className="p-5">
-      <form submit={handleSubmit} className="card mx-auto *:flex *:w-full space-y-2 my-5">
+      <CardWithForm />
+      <form onSubmit={handleSubmit} className="card *:flex *:w-full space-y-3 my-5">
         <div>
-          <input placeholder="Username..." value={username} onChange={e => setUsername(e.target.value)} className="input" />
+          <Input placeholder="Username..." value={username} onChange={e => setUsername(e.target.value)} className="focus:border-teal-300 focus:ring-4 focus:ring-teal-200" />
         </div>
         <div>
-          <input type="password" placeholder="Password..." value={password} onChange={e => setPassword(e.target.value)} className="input" />
+          <Input type="password" placeholder="Password..." value={password} onChange={e => setPassword(e.target.value)} className="focus:border-teal-300 focus:ring-4 focus:ring-teal-200" />
         </div>
         <div>
           <label className="flex w-fit gap-4 text-gray-600 transition hover:cursor-pointer hover:text-gray-800">
@@ -34,7 +93,12 @@ export default function () {
           </label>
         </div>
         <div>
-          <button className="btn btn-primary ml-auto block">Apply</button>
+          <Button className="ml-auto block bg-teal-500">Login</Button>
+        </div>
+        <div>
+          <p className="text-gray-500 [&:hover]:bg-amber-300 [border:_1px_solid_red] text-base">
+            Don't have an account? <a href="#" className="text-blue-400">Sign up</a>.If you have any problem while trying to create account you can reach us via this <a href="#" className="text-blue-400">link</a>
+          </p>
         </div>
       </form>
 

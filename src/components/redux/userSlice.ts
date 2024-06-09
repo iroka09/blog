@@ -10,7 +10,7 @@ const themeSlice = createSlice({
     password: "1234",
   },
   reducers: {
-    changeusername(state, { payload }) {
+    changeUsername(state, { payload }) {
       state.username = payload
     },
     changePassword(state, { payload }) {
@@ -20,5 +20,5 @@ const themeSlice = createSlice({
 })
 
 
-export const { changeusername, changePassword } = themeSlice.actions
+export const { changeUsername, changePassword } = themeSlice.actions
 export default themeSlice.reducer
