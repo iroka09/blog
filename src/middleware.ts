@@ -10,7 +10,6 @@ const router = createEdgeRouter<NextRequest, NextFetchEvent>();
 
 router.use(async (req, event, next) => {
   console.warn("middleware ", req.nextUrl.pathname);
-  // added from remote
   return next();
 });
 
@@ -19,9 +18,7 @@ router.use("/any", (req) => {
 });
 
 router.all(() => {
-  console.log("process all()")
   return NextResponse.next();
-  //added in remote by a team
 });
 
 export async function middleware(req: NextRequest, event: NextFetchEvent) {
