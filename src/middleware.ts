@@ -9,12 +9,13 @@ const router = createEdgeRouter<NextRequest, NextFetchEvent>();
 
 
 router.use(async (req, event, next) => {
-  console.warn("middleware ", req.nextUrl.pathname);
+  //added in remote by a team
+console.warn("middleware ", req.nextUrl.pathname);
   return next();
 });
 
 router.use("/any", (req) => {
-  return new NextResponse("ONE page-1 oooo")
+  return new NextResponse("ONE page-2 teamo oooo")
 });
 
 router.all(() => {
