@@ -1,5 +1,5 @@
 
-import { NextRequest, NextResponse, NextFetchEvent } from "next/server"
+import { type NextRequest, NextResponse, NextFetchEvent } from "next/server"
 import { createEdgeRouter } from "next-connect";
 
 
